@@ -5,12 +5,17 @@ import { LoginComponent } from './auth/login/login.component';
 
 
 const routes: Routes = [
-  { path: 'auth/register', component: RegisterComponent },
-  { path: 'auth/login', component: LoginComponent },
+
   
  
-  // { path: 'user-home', component: UserHomeComponent },
-  // { path: 'admin-home', component: AdminHomeComponent },
+  {
+    path: '',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
+  {
+    path: '/admin',
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+  }
 ];
 
 @NgModule({
